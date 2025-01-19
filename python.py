@@ -1,45 +1,21 @@
-import tkinter as tk
-from tkinter import messagebox
-import re
-
-def submit_form():
-    name = name_entry.get().strip()
-    email = email_entry.get().strip()
-    password = password_entry.get().strip()
-
-    if not name:
-        messagebox.showerror("Error", "Name is required.")
-        return
-
-    email_pattern = r"^[^\s@]+@[^\s@]+\.[^\s@]+$"
-    if not re.match(email_pattern, email):
-        messagebox.showerror("Error", "Enter a valid email address.")
-        return
-
-    if len(password) < 6:
-        messagebox.showerror("Error", "Password must be at least 6 characters.")
-        return
-
-    
-    messagebox.showinfo("Success", f"Form submitted!\nName: {name}\nEmail: {email}")
-
-window = tk.Tk()
-window.title("Sign-Up Form")
-window.geometry("300x250")
-
-tk.Label(window, text="Name:").pack(pady=5)
-name_entry = tk.Entry(window)
-name_entry.pack(pady=5)
-
-tk.Label(window, text="Email:").pack(pady=5)
-email_entry = tk.Entry(window)
-email_entry.pack(pady=5)
-
-tk.Label(window, text="Password:").pack(pady=5)
-password_entry = tk.Entry(window, show="*")
-password_entry.pack(pady=5)
-
-submit_button = tk.Button(window, text="Submit", command=submit_form)
-submit_button.pack(pady=20)
-
-window.mainloop()
+def chatbot():
+    print("Hi, I'm your simple AI chatbot! Type 'exit' to end the chat.")
+    while True:
+        user_input = input("You: ").strip().lower()
+        
+        if user_input == 'exit':
+            print("Chatbot: Goodbye!")
+            break
+        elif "hello" in user_input:
+            print("Chatbot: Hello! How can I assist you today?")
+        elif "how are you" in user_input:
+            print("Chatbot: I'm just a program, but I'm functioning perfectly!")
+        elif "your name" in user_input:
+            print("Chatbot: I'm ChatGPT, your simple AI assistant.")
+        elif "bye" in user_input:
+            print("Chatbot: Goodbye! Have a great day!")
+            break
+        else:
+            print("Chatbot: I'm not sure how to respond to that. Can you rephrase?")
+            
+chatbot()
